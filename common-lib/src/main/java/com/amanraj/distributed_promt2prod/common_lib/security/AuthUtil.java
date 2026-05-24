@@ -1,6 +1,6 @@
-package com.codingshuttle.projects.lovable_clone.security;
+package com.amanraj.distributed_promt2prod.common_lib.security;
 
-import com.codingshuttle.projects.lovable_clone.entity.User;
+import com.amanraj.distributed_promt2prod.common_lib.dto.UserDto;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -25,10 +25,10 @@ public class AuthUtil {
         return Keys.hmacShaKeyFor(jwtSecretKey.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String generateAccessToken(User user) {
+    public String generateAccessToken(UserDto user) {
         return Jwts.builder()
-                .subject(user.getUsername())
-                .claim("userId", user.getId().toString())
+                .subject(user.username())
+                .claim("userId", user.id().toString())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + 1000*60*100))
                 .signWith(getSecretKey())
@@ -44,7 +44,7 @@ public class AuthUtil {
 
         Long userId = Long.parseLong(claims.get("userId", String.class));
         String username = claims.getSubject();
-        return new JwtUserPrincipal(userId, username, new ArrayList<>());
+        return new JwtUserPrincipal(userId, username,null, new ArrayList<>());
     }
 
     public Long getCurrentUserId() {

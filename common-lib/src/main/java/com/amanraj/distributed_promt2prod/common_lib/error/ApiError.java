@@ -1,4 +1,4 @@
-package com.java.backend.lovable_backend.error;
+package com.amanraj.distributed_promt2prod.common_lib.error;
 
 import org.springframework.http.HttpStatus;
 
@@ -21,5 +21,3 @@ public record ApiError(
     }
 }
 
-record ApiFieldError(String field, String message) {
-}

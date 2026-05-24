@@ -1,4 +1,4 @@
-package com.codingshuttle.projects.lovable_clone.security;
+package com.amanraj.distributed_promt2prod.common_lib.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

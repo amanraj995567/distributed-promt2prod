@@ -16,4 +16,6 @@ public interface SubscriptionRespository extends JpaRepository<Subscription, Lon
     boolean existsByStripeSubscriptionId(String subscriptionId);
 
     Optional<Subscription> findByStripeSubscriptionId(String gatewaySubscriptionId);
+
+    void save(Subscription subscription);
 }

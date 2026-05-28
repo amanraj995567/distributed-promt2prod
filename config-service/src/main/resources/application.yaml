@@ -1,3 +1,14 @@
+server:
+  port: 8888
+
 spring:
   application:
     name: config-service
+
+  cloud:
+    config.server.git:
+          uri: https://github.com/amanraj995567/promt2prod-config-server
+          default-label: main
+          username: amanraj995567
+          password: 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
+

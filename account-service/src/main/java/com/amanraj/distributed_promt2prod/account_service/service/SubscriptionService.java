@@ -3,6 +3,7 @@ package com.amanraj.distributed_promt2prod.account_service.service;
 
 
 import com.amanraj.distributed_promt2prod.account_service.dto.subscription.SubscriptionResponse;
+import com.amanraj.distributed_promt2prod.common_lib.dto.PlanDto;
 import com.amanraj.distributed_promt2prod.common_lib.enums.SubscriptionStatus;
 
 import java.time.Instant;
@@ -20,4 +21,6 @@ public interface SubscriptionService {
     void renewSubscriptionPeriod(String subId, Instant periodStart, Instant periodEnd);
 
     void markSubscriptionPastDue(String subId);
+
+    PlanDto getCurrentSubscribedPlanByUser();
 }

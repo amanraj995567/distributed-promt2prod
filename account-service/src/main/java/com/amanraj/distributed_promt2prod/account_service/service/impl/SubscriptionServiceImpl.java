@@ -9,6 +9,7 @@ import com.amanraj.distributed_promt2prod.account_service.repository.PlanReposit
 import com.amanraj.distributed_promt2prod.account_service.repository.SubscriptionRespository;
 import com.amanraj.distributed_promt2prod.account_service.repository.UserRepository;
 import com.amanraj.distributed_promt2prod.account_service.service.SubscriptionService;
+import com.amanraj.distributed_promt2prod.common_lib.dto.PlanDto;
 import com.amanraj.distributed_promt2prod.common_lib.enums.SubscriptionStatus;
 import com.amanraj.distributed_promt2prod.common_lib.error.ResourceNotFoundException;
 import com.amanraj.distributed_promt2prod.common_lib.security.AuthUtil;
@@ -139,6 +140,12 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         // Notify user via email
 
 
+    }
+
+    @Override
+    public PlanDto getCurrentSubscribedPlanByUser() {
+         SubscriptionResponse subscriptionResponse = getCurrentSubscription();
+         return subscriptionResponse.plan();
     }
 
 

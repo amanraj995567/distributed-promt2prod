@@ -19,8 +19,6 @@ public class AuthController {
      AuthService authService;
    //  UserService userService;
 
-
-
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse> signup(@RequestBody SignupRequest signupRequest) {
         return ResponseEntity.ok(authService.signup(signupRequest));
@@ -30,12 +28,5 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest loginRequest){
          return ResponseEntity.ok(authService.login(loginRequest));
     }
-
-//    @GetMapping("me")
-//    public  ResponseEntity<UserProfileResponse> getProfile(){
-//        Long userId = 1L;
-//        return ResponseEntity.ok(userService.getProfile(userId));
-//    }
-
 
 }

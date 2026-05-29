@@ -1,9 +1,9 @@
 package com.amanraj.distributed_promt2prod.workspace_service;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@EnableFeignClinets
 public class WorkspaceServiceApplication {
 
 	public static void main(String[] args) {

@@ -1,7 +1,6 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.service;
+package com.amanraj.distributed_promt2prod.intelligence_service.service;
 
-
-import com.codingshuttle.distributed_lovable.intelligence_service.dto.chat.ChatResponse;
+import com.amanraj.distributed_promt2prod.intelligence_service.dto.ChatResponse;
 
 import java.util.List;
 

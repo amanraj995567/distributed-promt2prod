@@ -1,8 +1,8 @@
-package com.codingshuttle.distributed_lovable.workspace_service.service;
+package com.amanraj.distributed_promt2prod.workspace_service.service;
 
-import com.codingshuttle.distributed_lovable.workspace_service.dto.project.DeployResponse;
-import org.jspecify.annotations.Nullable;
+
+import com.amanraj.distributed_promt2prod.workspace_service.dto.project.DeployResponse;
 
 public interface DeploymentService {
-    @Nullable DeployResponse deploy(Long projectId);
+    DeployResponse deploy(Long projectId);
 }

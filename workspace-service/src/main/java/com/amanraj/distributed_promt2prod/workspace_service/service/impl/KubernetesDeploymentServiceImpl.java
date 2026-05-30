@@ -1,14 +1,13 @@
-package com.codingshuttle.distributed_lovable.workspace_service.service.impl;
+package com.amanraj.distributed_promt2prod.workspace_service.service.impl;
 
-import com.codingshuttle.distributed_lovable.workspace_service.dto.project.DeployResponse;
-import com.codingshuttle.distributed_lovable.workspace_service.service.DeploymentService;
+import com.amanraj.distributed_promt2prod.workspace_service.dto.project.DeployResponse;
+import com.amanraj.distributed_promt2prod.workspace_service.service.DeploymentService;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.dsl.ExecListener;
 import io.fabric8.kubernetes.client.dsl.ExecWatch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,7 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.repository;
+package com.amanraj.distributed_promt2prod.intelligence_service.repository;
 
-import com.codingshuttle.distributed_lovable.intelligence_service.entity.ChatEvent;
+
+import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

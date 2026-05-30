@@ -1,4 +1,4 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.service;
+package com.amanraj.distributed_promt2prod.intelligence_service.service;
 
 public interface UsageService {
     void recordTokenUsage(Long userId, int actualTokens);

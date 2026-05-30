@@ -1,7 +1,7 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.entity;
+package com.amanraj.distributed_promt2prod.intelligence_service.entities;
 
-import com.codingshuttle.distributed_lovable.common_lib.enums.ChatEventStatus;
-import com.codingshuttle.distributed_lovable.common_lib.enums.ChatEventType;
+
+import com.amanraj.distributed_promt2prod.common_lib.enums.ChatEventType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -43,6 +43,6 @@ public class ChatEvent {
 
     @Enumerated(EnumType.STRING)
 //    @Column(nullable = false)
-    ChatEventStatus status;
+      ChatEventStatus status;
 
 }

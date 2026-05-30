@@ -1,7 +1,7 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.client;
+package com.amanraj.distributed_promt2prod.intelligence_service.client;
 
-import com.codingshuttle.distributed_lovable.common_lib.dto.FileTreeDto;
-import com.codingshuttle.distributed_lovable.common_lib.enums.ProjectPermission;
+import com.amanraj.distributed_promt2prod.common_lib.dto.FileTreeDto;
+import com.amanraj.distributed_promt2prod.common_lib.enums.ProjectPermission;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

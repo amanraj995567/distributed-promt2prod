@@ -1,10 +1,11 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.controller;
+package com.amanraj.distributed_promt2prod.intelligence_service.controller;
 
-import com.codingshuttle.distributed_lovable.intelligence_service.dto.chat.ChatRequest;
-import com.codingshuttle.distributed_lovable.intelligence_service.dto.chat.ChatResponse;
-import com.codingshuttle.distributed_lovable.intelligence_service.dto.chat.StreamResponse;
-import com.codingshuttle.distributed_lovable.intelligence_service.service.AiGenerationService;
-import com.codingshuttle.distributed_lovable.intelligence_service.service.ChatService;
+
+import com.amanraj.distributed_promt2prod.intelligence_service.dto.ChatRequest;
+import com.amanraj.distributed_promt2prod.intelligence_service.dto.ChatResponse;
+import com.amanraj.distributed_promt2prod.intelligence_service.dto.StreamResponse;
+import com.amanraj.distributed_promt2prod.intelligence_service.service.AiGenerationService;
+import com.amanraj.distributed_promt2prod.intelligence_service.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

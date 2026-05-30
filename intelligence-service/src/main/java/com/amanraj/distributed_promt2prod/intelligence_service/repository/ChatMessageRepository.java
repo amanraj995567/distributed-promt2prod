@@ -1,7 +1,8 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.repository;
+package com.amanraj.distributed_promt2prod.intelligence_service.repository;
 
-import com.codingshuttle.distributed_lovable.intelligence_service.entity.ChatMessage;
-import com.codingshuttle.distributed_lovable.intelligence_service.entity.ChatSession;
+
+import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatMessage;
+import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatSession;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

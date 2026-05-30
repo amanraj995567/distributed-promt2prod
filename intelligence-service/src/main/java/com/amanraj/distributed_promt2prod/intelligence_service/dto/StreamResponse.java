@@ -1,3 +1,3 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.dto.chat;
+package com.amanraj.distributed_promt2prod.intelligence_service.dto;
 
 public record StreamResponse(String text) {}

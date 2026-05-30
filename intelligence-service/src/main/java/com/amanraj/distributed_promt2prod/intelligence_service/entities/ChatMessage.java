@@ -1,11 +1,10 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.entity;
+package com.amanraj.distributed_promt2prod.intelligence_service.entities;
 
-import com.codingshuttle.distributed_lovable.common_lib.enums.MessageRole;
+import com.amanraj.distributed_promt2prod.common_lib.enums.MessageRole;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.Instant;
 import java.util.List;
 

@@ -1,9 +1,8 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.entity;
+package com.amanraj.distributed_promt2prod.intelligence_service.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 import java.time.LocalDate;
 
 

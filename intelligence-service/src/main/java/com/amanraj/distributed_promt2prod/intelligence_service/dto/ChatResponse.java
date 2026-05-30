@@ -1,4 +1,4 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.dto.chat;
+package com.amanraj.distributed_promt2prod.intelligence_service.dto;
 
 
 import com.codingshuttle.distributed_lovable.common_lib.enums.MessageRole;

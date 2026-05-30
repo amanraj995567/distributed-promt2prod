@@ -1,14 +1,14 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.service.impl;
+package com.amanraj.distributed_promt2prod.intelligence_service.service.impl;
 
-import com.codingshuttle.distributed_lovable.common_lib.security.AuthUtil;
-import com.codingshuttle.distributed_lovable.intelligence_service.dto.chat.ChatResponse;
-import com.codingshuttle.distributed_lovable.intelligence_service.entity.ChatMessage;
-import com.codingshuttle.distributed_lovable.intelligence_service.entity.ChatSession;
-import com.codingshuttle.distributed_lovable.intelligence_service.entity.ChatSessionId;
-import com.codingshuttle.distributed_lovable.intelligence_service.mapper.ChatMapper;
-import com.codingshuttle.distributed_lovable.intelligence_service.repository.ChatMessageRepository;
-import com.codingshuttle.distributed_lovable.intelligence_service.repository.ChatSessionRepository;
-import com.codingshuttle.distributed_lovable.intelligence_service.service.ChatService;
+
+import com.amanraj.distributed_promt2prod.common_lib.security.AuthUtil;
+import com.amanraj.distributed_promt2prod.intelligence_service.dto.ChatResponse;
+import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatMessage;
+import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatSession;
+import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatSessionId;
+import com.amanraj.distributed_promt2prod.intelligence_service.repository.ChatMessageRepository;
+import com.amanraj.distributed_promt2prod.intelligence_service.repository.ChatSessionRepository;
+import com.amanraj.distributed_promt2prod.intelligence_service.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

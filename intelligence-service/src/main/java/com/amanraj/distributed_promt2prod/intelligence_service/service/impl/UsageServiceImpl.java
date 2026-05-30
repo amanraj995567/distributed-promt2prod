@@ -1,11 +1,11 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.service.impl;
+package com.amanraj.distributed_promt2prod.intelligence_service.service.impl;
 
-import com.codingshuttle.distributed_lovable.common_lib.dto.PlanDto;
-import com.codingshuttle.distributed_lovable.common_lib.security.AuthUtil;
-import com.codingshuttle.distributed_lovable.intelligence_service.client.AccountClient;
-import com.codingshuttle.distributed_lovable.intelligence_service.entity.UsageLog;
-import com.codingshuttle.distributed_lovable.intelligence_service.repository.UsageLogRepository;
-import com.codingshuttle.distributed_lovable.intelligence_service.service.UsageService;
+import com.amanraj.distributed_promt2prod.common_lib.dto.PlanDto;
+import com.amanraj.distributed_promt2prod.common_lib.security.AuthUtil;
+import com.amanraj.distributed_promt2prod.intelligence_service.client.AccountClient;
+import com.amanraj.distributed_promt2prod.intelligence_service.entities.UsageLog;
+import com.amanraj.distributed_promt2prod.intelligence_service.repository.UsageLogRepository;
+import com.amanraj.distributed_promt2prod.intelligence_service.service.UsageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -51,7 +51,6 @@ public class UsageServiceImpl implements UsageService {
             throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS,
                     "Daily limit reached, Upgrade now");
         }
-
     }
 
     private UsageLog createNewDailyLog(Long userId, LocalDate date) {

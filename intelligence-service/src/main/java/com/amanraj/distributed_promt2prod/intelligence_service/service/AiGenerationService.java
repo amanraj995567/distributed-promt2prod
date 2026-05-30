@@ -1,6 +1,7 @@
-package com.codingshuttle.distributed_lovable.intelligence_service.service;
+package com.amanraj.distributed_promt2prod.intelligence_service.service;
 
-import com.codingshuttle.distributed_lovable.intelligence_service.dto.chat.StreamResponse;
+
+import com.amanraj.distributed_promt2prod.intelligence_service.dto.StreamResponse;
 import reactor.core.publisher.Flux;
 
 public interface AiGenerationService {

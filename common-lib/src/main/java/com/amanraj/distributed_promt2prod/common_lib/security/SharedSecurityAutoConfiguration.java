@@ -1,5 +1,4 @@
 package com.amanraj.distributed_promt2prod.common_lib.security;
-
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -30,5 +29,4 @@ public class SharedSecurityAutoConfiguration {
             }
         };
     }
-
 }

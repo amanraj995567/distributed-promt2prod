@@ -12,7 +12,7 @@ import java.util.List;
 @ConfigurationProperties(prefix="app.security")
 @Getter
 @Setter
-public class SecuritiesProperty  {
+public class SecuritiesProperties {
 
     private List<String> publicRoutes;
 

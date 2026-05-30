@@ -2,8 +2,12 @@ package com.amanraj.distributed_promt2prod.intelligence_service.service.impl;
 
 
 import com.amanraj.distributed_promt2prod.common_lib.enums.ChatEventType;
+import com.amanraj.distributed_promt2prod.common_lib.enums.MessageRole;
+import com.amanraj.distributed_promt2prod.common_lib.event.FileStoreRequestEvent;
 import com.amanraj.distributed_promt2prod.common_lib.security.AuthUtil;
 import com.amanraj.distributed_promt2prod.intelligence_service.dto.StreamResponse;
+import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatEvent;
+import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatMessage;
 import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatSession;
 import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatSessionId;
 import com.amanraj.distributed_promt2prod.intelligence_service.llm.CodeGenerationTools;
@@ -14,6 +18,8 @@ import com.amanraj.distributed_promt2prod.intelligence_service.repository.ChatEv
 import com.amanraj.distributed_promt2prod.intelligence_service.repository.ChatMessageRepository;
 import com.amanraj.distributed_promt2prod.intelligence_service.repository.ChatSessionRepository;
 import com.amanraj.distributed_promt2prod.intelligence_service.service.AiGenerationService;
+import org.springframework.kafka.core.KafkaTemplate;
+import com.stripe.param.SourceCreateParams;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -38,6 +44,7 @@ public class AiGenerationServiceImpl implements AiGenerationService {
     private final LlmResponseParser llmResponseParser;
     private final ChatMessageRepository chatMessageRepository;
     private final ChatEventRepository chatEventRepository;
+    private final  KafkaTemplate<String, Object>kafkaTemplate;
 
 
     @Override
@@ -100,7 +107,7 @@ public class AiGenerationServiceImpl implements AiGenerationService {
                 });
     }
 
-    private void finalizeChats(String userMessage, ChatSession chatSession, String fullText, Long duration, Usage usage, Long userId) {
+    private void finalizeChats(String userMessage, ChatSession chatSession, String fullText, Long duration, SourceCreateParams.Usage usage, Long userId) {
         Long projectId = chatSession.getId().getProjectId();
 
         if(usage != null) {
@@ -138,7 +145,16 @@ public class AiGenerationServiceImpl implements AiGenerationService {
 
         chatEventList.stream()
                 .filter(e -> e.getType() == ChatEventType.FILE_EDIT)
-                //.forEach(e -> projectFileService.saveFile(projectId, e.getFilePath()));  we will use kafka here
+                        .forEach(e-> {
+                            FileStoreRequestEvent fileStoreRequestEvent = new FileStoreRequestEvent(
+                                    projectId,
+                                    e.getFilePath(),
+                                    e.getContent(),
+                                    userId
+                            );
+                            kafkaTemplate.send("file-storage-event", "project-" + projectId, fileStoreRequestEvent);
+                        });
+
 
 
         chatEventRepository.saveAll(chatEventList);

@@ -1,6 +1,7 @@
 package com.amanraj.distributed_promt2prod.intelligence_service.service.impl;
 
 
+import com.amanraj.distributed_promt2prod.common_lib.enums.ChatEventStatus;
 import com.amanraj.distributed_promt2prod.common_lib.enums.ChatEventType;
 import com.amanraj.distributed_promt2prod.common_lib.enums.MessageRole;
 import com.amanraj.distributed_promt2prod.common_lib.event.FileStoreRequestEvent;
@@ -94,7 +95,7 @@ public class AiGenerationServiceImpl implements AiGenerationService {
                 })
                 .doOnComplete(() -> {
                     Schedulers.boundedElastic().schedule(() -> {
-//                        parseAndSaveFiles(fullResponseBuffer.toString(), projectId);
+                       parseAndSaveFiles(fullResponseBuffer.toString(), projectId);
 
                         long duration = (endTime.get() - startTime.get()) /  1000;
                         finalizeChats(userMessage, chatSession, fullResponseBuffer.toString(), duration, usageRef.get(), userId);
@@ -107,7 +108,9 @@ public class AiGenerationServiceImpl implements AiGenerationService {
                 });
     }
 
-    private void finalizeChats(String userMessage, ChatSession chatSession, String fullText, Long duration, SourceCreateParams.Usage usage, Long userId) {
+
+
+    private void finalizeChats(String userMessage, ChatSession chatSession, String fullText, Long duration, Usage usage, Long userId) {
         Long projectId = chatSession.getId().getProjectId();
 
         if(usage != null) {
@@ -136,29 +139,32 @@ public class AiGenerationServiceImpl implements AiGenerationService {
 
         List<ChatEvent> chatEventList = llmResponseParser.parseChatEvents(fullText, assistantChatMessage);
         chatEventList.addFirst(ChatEvent.builder()
-                        .type(ChatEventType.THOUGHT)
-                        .status(ChatEventStatus.CONFIRMED)
-                        .chatMessage(assistantChatMessage)
-                        .content("Thought for "+duration+"s")
-                        .sequenceOrder(0)
+                .type(ChatEventType.THOUGHT)
+                .status(ChatEventStatus.CONFIRMED)
+                .chatMessage(assistantChatMessage)
+                .content("Thought for "+duration+"s")
+                .sequenceOrder(0)
                 .build());
 
         chatEventList.stream()
                 .filter(e -> e.getType() == ChatEventType.FILE_EDIT)
-                        .forEach(e-> {
-                            FileStoreRequestEvent fileStoreRequestEvent = new FileStoreRequestEvent(
-                                    projectId,
-                                    e.getFilePath(),
-                                    e.getContent(),
-                                    userId
-                            );
-                            kafkaTemplate.send("file-storage-event", "project-" + projectId, fileStoreRequestEvent);
-                        });
-
-
+                .forEach(e -> {
+                    String sagaId = UUID.randomUUID().toString();
+                    e.setSagaId(sagaId);
+                    FileStoreRequestEvent fileStoreRequestEvent = new FileStoreRequestEvent(
+                            projectId,
+                            sagaId,
+                            e.getFilePath(),
+                            e.getContent(),
+                            userId
+                    );
+                    log.info("Storage request event sent: {}", e.getFilePath());
+                    kafkaTemplate.send("file-storage-request-event", "project-"+projectId, fileStoreRequestEvent);
+                });
 
         chatEventRepository.saveAll(chatEventList);
     }
+
 
     private ChatSession createChatSessionIfNotExists(Long projectId, Long userId) {
         ChatSessionId chatSessionId = new ChatSessionId(projectId, userId);

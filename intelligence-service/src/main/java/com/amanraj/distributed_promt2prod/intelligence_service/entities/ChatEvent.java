@@ -1,6 +1,7 @@
 package com.amanraj.distributed_promt2prod.intelligence_service.entities;
 
 
+import com.amanraj.distributed_promt2prod.common_lib.enums.ChatEventStatus;
 import com.amanraj.distributed_promt2prod.common_lib.enums.ChatEventType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -43,6 +44,6 @@ public class ChatEvent {
 
     @Enumerated(EnumType.STRING)
 //    @Column(nullable = false)
-      ChatEventStatus status;
+    ChatEventStatus status;
 
 }

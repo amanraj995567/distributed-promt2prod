@@ -1,6 +1,7 @@
 package com.amanraj.distributed_promt2prod.intelligence_service.llm;
 
 
+import com.amanraj.distributed_promt2prod.common_lib.enums.ChatEventStatus;
 import com.amanraj.distributed_promt2prod.common_lib.enums.ChatEventType;
 import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatEvent;
 import com.amanraj.distributed_promt2prod.intelligence_service.entities.ChatMessage;

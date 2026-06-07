@@ -4,7 +4,7 @@
 
 An AI-powered code generation platform built on event-driven microservices. Users describe an application in natural language — the platform streams AI-generated code in real time, persists files to object storage, and deploys a live preview to Kubernetes.
 
-![System Architecture](docs/architecture.png)
+![System Architecture](architecture.png)
 
 ---
 
